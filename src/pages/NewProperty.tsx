@@ -39,7 +39,7 @@ export default function NewPropertyPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert("Объявление успешно создано!")
+    alert("Заявка на лестницу отправлена! Мы свяжемся с вами для замера.")
   }
 
   return (
@@ -51,91 +51,103 @@ export default function NewPropertyPage() {
         </Link>
         <ChevronRight className="h-4 w-4" />
         <Link to="/properties" className="hover:text-foreground">
-          Объекты
+          Каталог лестниц
         </Link>
         <ChevronRight className="h-4 w-4" />
-        <span className="text-foreground">Новое объявление</span>
+        <span className="text-foreground">Заказать лестницу</span>
       </div>
 
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">Разместить объявление</h1>
-        <p className="text-muted-foreground">Заполните форму ниже, чтобы добавить ваш объект</p>
+        <h1 className="text-3xl font-bold">Заказать лестницу</h1>
+        <p className="text-muted-foreground">Заполните форму, и наш мастер рассчитает стоимость и приедет на замер</p>
       </div>
 
       <form onSubmit={handleSubmit}>
         <div className="grid gap-8 md:grid-cols-[2fr_1fr]">
           <Card>
             <CardHeader>
-              <CardTitle>Информация об объекте</CardTitle>
-              <CardDescription>Основные характеристики недвижимости</CardDescription>
+              <CardTitle>Параметры лестницы</CardTitle>
+              <CardDescription>Расскажите, какую лестницу вы хотите</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="title">Название объявления</Label>
-                <Input id="title" placeholder="например, Современная квартира в центре" required />
+                <Label htmlFor="title">Название проекта</Label>
+                <Input id="title" placeholder="например, Дубовая лестница на второй этаж" required />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="type">Тип недвижимости</Label>
+                  <Label htmlFor="type">Тип лестницы</Label>
                   <Select required>
                     <SelectTrigger id="type">
                       <SelectValue placeholder="Выберите тип" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="house">Дом</SelectItem>
-                      <SelectItem value="apartment">Квартира</SelectItem>
-                      <SelectItem value="condo">Апартаменты</SelectItem>
-                      <SelectItem value="townhouse">Таунхаус</SelectItem>
-                      <SelectItem value="land">Участок</SelectItem>
+                      <SelectItem value="marsh">Маршевая</SelectItem>
+                      <SelectItem value="spiral">Винтовая</SelectItem>
+                      <SelectItem value="floating">Парящая (консольная)</SelectItem>
+                      <SelectItem value="combined">Комбинированная</SelectItem>
+                      <SelectItem value="attic">Чердачная</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="status">Статус</Label>
+                  <Label htmlFor="material">Материал</Label>
                   <Select required>
-                    <SelectTrigger id="status">
-                      <SelectValue placeholder="Выберите статус" />
+                    <SelectTrigger id="material">
+                      <SelectValue placeholder="Выберите материал" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="available">Доступно</SelectItem>
-                      <SelectItem value="pending">Бронь</SelectItem>
-                      <SelectItem value="sold">Продано</SelectItem>
+                      <SelectItem value="oak">Дуб</SelectItem>
+                      <SelectItem value="ash">Ясень</SelectItem>
+                      <SelectItem value="beech">Бук</SelectItem>
+                      <SelectItem value="metal">Металл</SelectItem>
+                      <SelectItem value="glass">Стекло</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="price">Цена (руб.)</Label>
-                <Input id="price" type="number" min="0" step="100000" required />
+                <Label htmlFor="price">Ваш бюджет (руб.)</Label>
+                <Input id="price" type="number" min="0" step="10000" placeholder="например, 300000" />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="bedrooms">Комнат</Label>
-                  <Input id="bedrooms" type="number" min="0" required />
+                  <Label htmlFor="bedrooms">Высота проёма (см)</Label>
+                  <Input id="bedrooms" type="number" min="0" placeholder="например, 280" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="bathrooms">Санузлов</Label>
-                  <Input id="bathrooms" type="number" min="0" step="1" required />
+                  <Label htmlFor="bathrooms">Количество пролётов</Label>
+                  <Input id="bathrooms" type="number" min="0" step="1" placeholder="например, 2" />
                 </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="squareFeet">Площадь (м2)</Label>
-                  <Input id="squareFeet" type="number" min="0" required />
+                  <Label htmlFor="squareFeet">Ширина лестницы (см)</Label>
+                  <Input id="squareFeet" type="number" min="0" placeholder="например, 100" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="yearBuilt">Год постройки</Label>
-                  <Input id="yearBuilt" type="number" min="1900" max={new Date().getFullYear()} required />
+                  <Label htmlFor="railing">Ограждение</Label>
+                  <Select>
+                    <SelectTrigger id="railing">
+                      <SelectValue placeholder="Выберите" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="wood">Деревянное</SelectItem>
+                      <SelectItem value="glass">Стеклянное</SelectItem>
+                      <SelectItem value="forged">Кованое</SelectItem>
+                      <SelectItem value="steel">Нержавейка</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="description">Описание</Label>
-                <Textarea id="description" placeholder="Опишите ваш объект..." className="min-h-[150px]" required />
+                <Label htmlFor="description">Пожелания к проекту</Label>
+                <Textarea id="description" placeholder="Опишите, какую лестницу вы хотите: стиль, цвет, особенности..." className="min-h-[150px]" required />
               </div>
             </CardContent>
           </Card>
@@ -143,12 +155,12 @@ export default function NewPropertyPage() {
           <div className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Расположение</CardTitle>
-                <CardDescription>Где находится ваш объект?</CardDescription>
+                <CardTitle>Адрес монтажа</CardTitle>
+                <CardDescription>Куда приехать на замер и установку?</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="street">Адрес</Label>
+                  <Label htmlFor="street">Адрес объекта</Label>
                   <Input id="street" required />
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -158,17 +170,7 @@ export default function NewPropertyPage() {
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="state">Район/Область</Label>
-                    <Input id="state" required />
-                  </div>
-                </div>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="zip">Индекс</Label>
-                    <Input id="zip" required />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="country">Страна</Label>
-                    <Input id="country" defaultValue="Россия" required />
+                    <Input id="state" />
                   </div>
                 </div>
               </CardContent>
@@ -200,8 +202,8 @@ export default function NewPropertyPage() {
         <div className="mt-8 grid gap-8 md:grid-cols-[2fr_1fr]">
           <Card>
             <CardHeader>
-              <CardTitle>Фотографии</CardTitle>
-              <CardDescription>Загрузите фото объекта (до 10 штук)</CardDescription>
+              <CardTitle>Фотографии проёма</CardTitle>
+              <CardDescription>Загрузите фото места установки или пример желаемой лестницы (до 10 штук)</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="mb-4">
@@ -251,8 +253,8 @@ export default function NewPropertyPage() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Удобства</CardTitle>
-              <CardDescription>Выберите все, что есть в вашем объекте</CardDescription>
+              <CardTitle>Опции лестницы</CardTitle>
+              <CardDescription>Выберите то, что хотите добавить в проект</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4">
@@ -266,7 +268,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-pool"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Бассейн
+                    Подсветка ступеней
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -279,7 +281,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-garage"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Гараж
+                    Забежные ступени
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -292,7 +294,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-garden"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Сад
+                    Тонировка/покраска
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -305,7 +307,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-balcony"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Балкон
+                    Стеклянное ограждение
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -318,7 +320,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-elevator"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Лифт
+                    Кованые элементы
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -331,7 +333,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-ac"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Кондиционер
+                    Противоскользящее покрытие
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -344,7 +346,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-furnished"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    С мебелью
+                    Замер мастером
                   </label>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -357,7 +359,7 @@ export default function NewPropertyPage() {
                     htmlFor="amenity-pet"
                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                   >
-                    Можно с питомцами
+                    Монтаж под ключ
                   </label>
                 </div>
               </div>
@@ -369,7 +371,7 @@ export default function NewPropertyPage() {
           <Link to="/properties">
             <Button variant="outline">Отмена</Button>
           </Link>
-          <Button type="submit">Опубликовать</Button>
+          <Button type="submit">Отправить заявку</Button>
         </div>
       </form>
     </div>

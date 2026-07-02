@@ -2,49 +2,49 @@ import { Link, useParams } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Bed, Bath, Square, Calendar, MapPin, Phone, Mail, Heart, Share2, Home, ChevronRight } from "lucide-react"
+import { AlignVerticalSpaceAround, Layers, Ruler, Calendar, Package, Phone, Mail, Heart, Share2, Home, ChevronRight } from "lucide-react"
 
 export default function PropertyDetailPage() {
   const { id } = useParams()
 
   const property = {
     id: id,
-    title: "Апартаменты с видом на реку",
-    type: "Апартаменты",
-    address: "Пресненская наб., 8, Москва-Сити",
-    price: 52000000,
-    bedrooms: 3,
+    title: "Винтовая лестница из дерева и ковки",
+    type: "Винтовая",
+    address: "Тёмный дуб, кованое ограждение",
+    price: 420000,
+    bedrooms: 18,
     bathrooms: 2,
-    squareFeet: 145,
-    yearBuilt: 2022,
+    squareFeet: 2,
+    yearBuilt: 2024,
     status: "Доступно",
     description:
-      "Великолепные апартаменты с панорамным видом на Москву-реку и деловой центр. Панорамное остекление от пола до потолка, кухня премиум-класса с техникой Miele, просторная планировка идеальна для приёма гостей. Мастер-спальня с собственной ванной комнатой, гардеробной и выходом на террасу. В доме: 2 машиноместа, бассейн, фитнес-центр, консьерж-сервис 24/7.",
+      "Элегантная винтовая лестница из массива дуба с коваными элементами ограждения — станет центром интерьера вашего дома. Ступени изготовлены из отборного дуба и покрыты износостойким лаком в 3 слоя. Кованое ограждение выполнено вручную нашими мастерами по индивидуальному эскизу. Компактная конструкция экономит пространство и подходит даже для небольших проёмов. Срок изготовления — от 3 недель, монтаж под ключ за 2 дня. Гарантия 5 лет.",
     features: [
-      "Вид на реку",
-      "Панорамное остекление",
-      "Кухня премиум-класса",
-      "Собственная терраса",
-      "Гардеробная",
-      "Паркет из дуба",
-      "Центральное кондиционирование",
-      "Прачечная в квартире",
-      "Охрана 24/7",
-      "Бассейн",
-      "Фитнес-центр",
-      "Консьерж-сервис",
+      "Массив дуба",
+      "Ручная ковка",
+      "Компактная конструкция",
+      "Износостойкий лак",
+      "Индивидуальный эскиз",
+      "Тонировка по RAL",
+      "Противоскользящие ступени",
+      "Бесшумные соединения",
+      "Замер мастером",
+      "Монтаж под ключ",
+      "Гарантия 5 лет",
+      "Доставка по региону",
     ],
     images: [
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
-      "/placeholder.svg?height=600&width=800",
+      "https://cdn.poehali.dev/projects/4bf85914-58ec-43e2-b5b8-c8835e8f7022/files/06a2dbad-f2aa-4c9b-b67c-e66bf6b35ca0.jpg",
+      "https://cdn.poehali.dev/projects/4bf85914-58ec-43e2-b5b8-c8835e8f7022/files/19e8123a-4de1-449f-a979-ea682f14afe6.jpg",
+      "https://cdn.poehali.dev/projects/4bf85914-58ec-43e2-b5b8-c8835e8f7022/files/a7c817d0-8dc5-489e-a337-a1b0bcddf2dd.jpg",
+      "https://cdn.poehali.dev/projects/4bf85914-58ec-43e2-b5b8-c8835e8f7022/files/19e8123a-4de1-449f-a979-ea682f14afe6.jpg",
+      "https://cdn.poehali.dev/projects/4bf85914-58ec-43e2-b5b8-c8835e8f7022/files/a7c817d0-8dc5-489e-a337-a1b0bcddf2dd.jpg",
     ],
     agent: {
-      name: "Анна Ковалёва",
+      name: "Игорь Столяров",
       phone: "+7 (495) 123-45-67",
-      email: "anna@novodom.ru",
+      email: "info@lestnica-master.ru",
       image: "/placeholder.svg?height=200&width=200",
     },
   }
@@ -66,7 +66,7 @@ export default function PropertyDetailPage() {
         </Link>
         <ChevronRight className="h-4 w-4" />
         <Link to="/properties" className="hover:text-foreground">
-          Объекты
+          Каталог лестниц
         </Link>
         <ChevronRight className="h-4 w-4" />
         <span className="text-foreground">{property.title}</span>
@@ -76,7 +76,7 @@ export default function PropertyDetailPage() {
         <div>
           <h1 className="mb-2 text-3xl font-bold">{property.title}</h1>
           <div className="mb-4 flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-muted-foreground" />
+            <Package className="h-4 w-4 text-muted-foreground" />
             <span>{property.address}</span>
             <Badge
               className={
@@ -93,27 +93,27 @@ export default function PropertyDetailPage() {
           </div>
           <div className="mb-6 flex flex-wrap items-center gap-4 text-muted-foreground">
             <div className="flex items-center gap-1">
-              <Bed className="h-5 w-5" />
-              <span>{property.bedrooms} комнаты</span>
+              <AlignVerticalSpaceAround className="h-5 w-5" />
+              <span>{property.bedrooms} ступеней</span>
             </div>
             <div className="flex items-center gap-1">
-              <Bath className="h-5 w-5" />
-              <span>{property.bathrooms} санузла</span>
+              <Layers className="h-5 w-5" />
+              <span>{property.bathrooms} пролёта</span>
             </div>
             <div className="flex items-center gap-1">
-              <Square className="h-5 w-5" />
-              <span>{property.squareFeet} м2</span>
+              <Ruler className="h-5 w-5" />
+              <span>ширина {property.squareFeet} м</span>
             </div>
             <div className="flex items-center gap-1">
               <Calendar className="h-5 w-5" />
-              <span>Построен в {property.yearBuilt}</span>
+              <span>гарантия 5 лет</span>
             </div>
           </div>
         </div>
         <div className="flex flex-col items-end justify-center">
           <div className="text-3xl font-bold">{formatPrice(property.price)}</div>
           <div className="mt-4 flex gap-2">
-            <Button size="lg">Связаться с агентом</Button>
+            <Button size="lg">Заказать такую же</Button>
             <Button size="lg" variant="outline">
               <Heart className="mr-2 h-4 w-4" />
               Сохранить
@@ -149,15 +149,15 @@ export default function PropertyDetailPage() {
           <Tabs defaultValue="description">
             <TabsList className="mb-4 grid w-full grid-cols-3">
               <TabsTrigger value="description">Описание</TabsTrigger>
-              <TabsTrigger value="features">Особенности</TabsTrigger>
-              <TabsTrigger value="location">Расположение</TabsTrigger>
+              <TabsTrigger value="features">Характеристики</TabsTrigger>
+              <TabsTrigger value="location">Доставка</TabsTrigger>
             </TabsList>
             <TabsContent value="description" className="space-y-4">
-              <h2 className="text-2xl font-semibold">Описание объекта</h2>
+              <h2 className="text-2xl font-semibold">Описание лестницы</h2>
               <p className="leading-relaxed">{property.description}</p>
             </TabsContent>
             <TabsContent value="features">
-              <h2 className="mb-4 text-2xl font-semibold">Особенности объекта</h2>
+              <h2 className="mb-4 text-2xl font-semibold">Характеристики и опции</h2>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                 {property.features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-2">
@@ -168,10 +168,10 @@ export default function PropertyDetailPage() {
               </div>
             </TabsContent>
             <TabsContent value="location">
-              <h2 className="mb-4 text-2xl font-semibold">Расположение</h2>
+              <h2 className="mb-4 text-2xl font-semibold">Доставка и монтаж</h2>
               <div className="aspect-video overflow-hidden rounded-lg bg-muted">
-                <div className="flex h-full items-center justify-center">
-                  <p className="text-muted-foreground">Здесь будет отображаться карта</p>
+                <div className="flex h-full items-center justify-center p-6 text-center">
+                  <p className="text-muted-foreground">Доставляем и монтируем лестницы по всему региону. Замер и расчёт — бесплатно. Монтаж под ключ за 1–2 дня.</p>
                 </div>
               </div>
             </TabsContent>
@@ -189,7 +189,7 @@ export default function PropertyDetailPage() {
             </div>
             <div>
               <h3 className="font-semibold">{property.agent.name}</h3>
-              <p className="text-sm text-muted-foreground">Агент по недвижимости</p>
+              <p className="text-sm text-muted-foreground">Мастер по лестницам</p>
             </div>
           </div>
           <div className="mb-6 space-y-2">
@@ -241,10 +241,10 @@ export default function PropertyDetailPage() {
                 id="message"
                 rows={4}
                 className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                defaultValue={`Меня интересует объект "${property.title}" по адресу ${property.address}. Прошу связаться со мной для получения дополнительной информации.`}
+                defaultValue={`Здравствуйте! Меня интересует лестница "${property.title}". Прошу рассчитать стоимость и связаться со мной для замера.`}
               ></textarea>
             </div>
-            <Button className="w-full">Отправить сообщение</Button>
+            <Button className="w-full">Отправить заявку</Button>
           </div>
         </div>
       </div>
